@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jwt_demo_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+secret-key: NzYzODc5MkY0MjNGNDUyODQ4MkI0RDYyNTE2NTU0Njg1NzZENUE3MTM0NzQzNzc3Mzk3QTI0NDMyNjQ2Mjk0QQ==
