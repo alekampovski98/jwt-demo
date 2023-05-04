@@ -1,8 +1,8 @@
 package io.intertec.jwtdemo.service;
 
-import io.intertec.jwtdemo.dto.AuthenticationRequest;
-import io.intertec.jwtdemo.dto.AuthenticationResponse;
-import io.intertec.jwtdemo.dto.RegisterRequest;
+import io.intertec.jwtdemo.dto.Request.AuthenticationRequest;
+import io.intertec.jwtdemo.dto.Response.AuthenticationResponse;
+import io.intertec.jwtdemo.dto.Request.RegisterRequest;
 import io.intertec.jwtdemo.exception.InvalidPasswordException;
 import io.intertec.jwtdemo.model.Role;
 import io.intertec.jwtdemo.model.User;
@@ -51,7 +51,7 @@ public class UserService implements UserDetailsService {
 
   private void checkPassword(User user, String reqPassword) throws InvalidPasswordException {
     if (!passwordEncoder.matches(reqPassword, user.getPassword()))
-      throw new InvalidPasswordException("User password is incorrect! Please provide appropriate one!");
+      throw new InvalidPasswordException("User's password is incorrect! Please provide appropriate one!");
   }
 
   private User findByEmail(String email) {

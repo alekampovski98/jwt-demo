@@ -1,14 +1,14 @@
-package io.intertec.jwtdemo.dto;
+package io.intertec.jwtdemo.dto.Response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Data
+@Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationResponse {
+public class AuthenticationResponse implements Response{
   private String token;
 }

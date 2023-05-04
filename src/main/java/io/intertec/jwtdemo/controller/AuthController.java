@@ -1,8 +1,10 @@
 package io.intertec.jwtdemo.controller;
 
-import io.intertec.jwtdemo.dto.AuthenticationRequest;
-import io.intertec.jwtdemo.dto.AuthenticationResponse;
-import io.intertec.jwtdemo.dto.RegisterRequest;
+import io.intertec.jwtdemo.dto.Request.AuthenticationRequest;
+import io.intertec.jwtdemo.dto.Response.AuthenticationResponse;
+import io.intertec.jwtdemo.dto.Request.RegisterRequest;
+import io.intertec.jwtdemo.dto.Response.MessageResponse;
+import io.intertec.jwtdemo.dto.Response.Response;
 import io.intertec.jwtdemo.exception.InvalidPasswordException;
 import io.intertec.jwtdemo.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -26,11 +28,11 @@ public class AuthController {
   }
 
   @PostMapping("/authenticate")
-  public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
+  public ResponseEntity<Response> authenticate(@RequestBody AuthenticationRequest request) {
     try {
       return ResponseEntity.ok(userService.authenticate(request));
     } catch (InvalidPasswordException e) {
-      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new AuthenticationResponse());
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new MessageResponse(e.getMessage()));
     }
   }
 }
